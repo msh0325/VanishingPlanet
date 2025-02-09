@@ -19,13 +19,23 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizon = Input.GetAxisRaw("Horizontal");
-        velocity = new Vector2(horizon,0);
+        if(!(GameManager.instance.isTalking)){
+            float horizon = Input.GetAxisRaw("Horizontal");
+            velocity = new Vector2(horizon,0);
 
-        if(Input.GetKeyDown(KeyCode.E)&&findPoint){
-            Debug.Log("pressed E");
-            GameManager.instance.startDialog(dialog);
+            if(Input.GetKeyDown(KeyCode.E)&&findPoint){
+                Debug.Log("pressed E");
+                GameManager.instance.startDialog(dialog);
+            }
+
+            if(horizon > 0){
+                transform.rotation = Quaternion.Euler(0,0,0);
+            }
+            else if(horizon < 0){
+                transform.rotation = Quaternion.Euler(0,180,0);
+            }
         }
+        
     }
 
     void FixedUpdate(){

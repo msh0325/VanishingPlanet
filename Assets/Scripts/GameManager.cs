@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private string[] currentDialog;
     private int currentIndex;
     private bool isTyping = false;
+    public bool isTalking = false;
 
     void Awake(){
         if (instance == null){
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void startDialog(DialogueData dialogueData){
+        isTalking = true;
         currentDialog = dialogueData.dialogLines;
         currentIndex = 0;
         dialogUI.SetActive(true);
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour
         selectBtn.SetActive(false);
         btnUI.SetActive(false);
         timer.isStart = false;
+        isTalking = false;
     }
     private IEnumerator TypeText(string text){
         isTyping = true;
