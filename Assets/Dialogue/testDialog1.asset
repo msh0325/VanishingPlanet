@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe43fd33770e7849bf53e90a709971e, type: 3}
+  m_Name: testDialog1
+  m_EditorClassIdentifier: 
+  dialogLines:
+  - "\uC774 \uC794\uD574\uB294 \uC791\uBB3C\uC744 \uAE30\uB97C\uB54C \uC0AC\uC6A9\uD588\uB358
+    \uAC83 \uAC19\uC544."
+  - "\uC774 \uC794\uD574\uB97C \uC870\uC0AC\uD574\uBCFC\uAE4C?"
+  selectLines:
+  - "\uCD5C\uCCA8\uB2E8 \uC7A5\uBE44\uB97C \uC774\uC6A9\uD574 \uC794\uD574\uB97C
+    \uD30C\uBCF8\uB2E4."
+  - "\uC8FC\uBCC0\uC5D0 \uD769\uC5B4\uC9C4 \uC794\uD574\uB97C \uC8FC\uC6CC \uBCF5\uAD6C
+    \uD504\uB85C\uADF8\uB7A8\uC744 \uB3CC\uB824 \uBCF8\uB2E4."
+  - "\uAC74\uB4DC\uB9AC\uC9C0 \uC54A\uACE0 \uADF8\uB0E5 \uB5A0\uB09C\uB2E4."
