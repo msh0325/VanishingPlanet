@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rigid;
     public DialogueData dialog;
     public bool findPoint = false;
+    public int exploreCount,neglectCount = 0;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 플레이어 키보드 입력 받아서 스프라이트 뒤집기 & 상호작용 키
         if(!(GameManager.instance.isTalking)){
             float horizon = Input.GetAxisRaw("Horizontal");
             velocity = new Vector2(horizon,0);
@@ -38,8 +40,24 @@ public class Player : MonoBehaviour
         
     }
 
+    // 플레이어 이동
     void FixedUpdate(){
-        rigid.velocity = new Vector2(velocity.x*speed,rigid.velocity.y);
+        if(!(GameManager.instance.isTalking)){
+            rigid.velocity = new Vector2(velocity.x*speed,rigid.velocity.y);
+        }
+        else if(GameManager.instance.isTalking){
+            rigid.velocity = Vector2.zero;
+        }
+    }
+
+    // 엔딩때 사용할 포인트 세기
+    public void countPoints(int index){
+        if(dialog.points[index] == 1){
+            exploreCount +=1;
+        }
+        else if(dialog.points[index] == 2){
+            neglectCount +=1;
+        }
     }
 
 }

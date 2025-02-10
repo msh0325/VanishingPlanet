@@ -928,6 +928,8 @@ MonoBehaviour:
   speed: 10
   dialog: {fileID: 0}
   findPoint: 0
+  countP1: 0
+  countP2: 0
 --- !u!212 &622583337
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1352,6 +1354,7 @@ GameObject:
   - component: {fileID: 804759579}
   - component: {fileID: 804759578}
   - component: {fileID: 804759577}
+  - component: {fileID: 804759580}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1433,6 +1436,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &804759580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804759576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b1703287f88ae14cbe5954274264a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 622583335}
+  xPos: 0
+  yPos: 0
+  zPos: 0
+  speed: 9
 --- !u!1 &870245492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1704,6 +1724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb7f0dd1597ea64190f9abc7e36e5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pc: {fileID: 622583336}
   dialogUI: {fileID: 628923152}
   dialogText: {fileID: 44841435}
   btnUI: {fileID: 360103986}
@@ -1714,6 +1735,7 @@ MonoBehaviour:
   - {fileID: 69349842}
   dialogBtn: {fileID: 628923156}
   timer: {fileID: 2044702280}
+  explorePoint: {fileID: 0}
   isTalking: 0
 --- !u!4 &1221244065
 Transform:

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
+    // 일정 시간 이후 특정 선택지 나타내기 위한 타이머
     
     public bool isStart = false;
     public float times;
