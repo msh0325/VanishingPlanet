@@ -16,11 +16,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TMP_Text[] btnText;
     [SerializeField] public Button dialogBtn;
     [SerializeField] public Timer timer;
+    [SerializeField] DialogueData endingDialog;
+    [SerializeField] Image blackImg;
     private string[] currentDialog;
     private int currentIndex;
     public GameObject explorePoint;
     private bool isTyping = false;
     public bool isTalking = false;
+    private bool isEnding = false;
     private int endingPoint = 0;
     private Coroutine typeCoroutine;
 
@@ -32,7 +35,7 @@ public class GameManager : MonoBehaviour
         btnUI.SetActive(false);
 
         dialogBtn.onClick.AddListener(()=>{
-            ShowNextLine();
+            OnDialogClick();
         });
     }
 
@@ -44,36 +47,50 @@ public class GameManager : MonoBehaviour
         currentIndex = 0;
         dialogUI.SetActive(true);
         for(int i=0;i<3;i++){
+            if(isEnding) break;
             btnText[i].text = dialogueData.selectLines[i];
         }
         ShowNextLine();
     }
 
-    // 스크립트 다음으로 넘기기
-    public void ShowNextLine(){
-
+    // 대화창 클릭했을 때 스크립트 출력중이면 한번에 출력 & 엔딩이면 화면 어두워지고 씬 전환
+    private void OnDialogClick(){
         if(isTyping){
             Debug.Log("typing-click");
             StopCoroutine(typeCoroutine);
             dialogText.text = currentDialog[currentIndex-1];
             isTyping = false;
-        }
-        else{
-                if(currentIndex < currentDialog.Length){
-                    typeCoroutine = StartCoroutine(TypeText(currentDialog[currentIndex]));
-                    currentIndex++;
-                }
-        }
-        if(currentIndex == currentDialog.Length && !isTyping){
             ShowSelectBtn();
-            timer.isStart = true;
-            timer.times = 0f;
         }
+        
+        else{
+            if (!isEnding){
+                ShowNextLine();
+            }
+            else{
+                StartCoroutine(FadeWindows(blackImg));
+            }
+        }
+    }
+
+    // 스크립트 다음으로 넘기기 & 마지막 씬일때 선택지 보여주기
+    public void ShowNextLine(){
+        if (isTyping) return;
+
+        if(currentIndex < currentDialog.Length){
+            typeCoroutine = StartCoroutine(TypeText(currentDialog[currentIndex]));
+            currentIndex++;
+        }
+        
     }
 
     // 선택지 버튼 보이기
     public void ShowSelectBtn(){
-        btnUI.SetActive(true);
+        if(currentIndex == currentDialog.Length && !isTyping && !isEnding && !(timer.isStart)){
+            btnUI.SetActive(true);
+            timer.isStart = true;
+            timer.times = 0f;
+        }
     }
 
     // 스크립트 끝
@@ -86,20 +103,17 @@ public class GameManager : MonoBehaviour
         timer.isStart = false;
         isTalking = false;
         endingPoint = pc.exploreCount + pc.neglectCount;
-        if(endingPoint >= 11){
+        if(endingPoint >= 1){
             ShowEnding();
         }
     }
     
-    // 엔딩 포인트 달성 시 엔딩 보여주기
+    // 엔딩 포인트 달성 시 엔딩 스크립트
     private void ShowEnding(){
-        if(pc.exploreCount > pc.neglectCount) {
-            SceneManager.LoadScene("ExploreEnding");
-        }
-        else if(pc.exploreCount < pc.neglectCount) {
-            SceneManager.LoadScene("NeglectEnding");
-        }
-    }
+        // 마무리 대사
+        isEnding = true;
+        startDialog(endingDialog);
+       }
     
     // 스크립트 글자 하나하나 타이핑하기
     private IEnumerator TypeText(string text){
@@ -111,6 +125,21 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.03f);
         }
         isTyping = false;
-        
+        ShowSelectBtn();
+    }
+    private IEnumerator FadeWindows(Image img){
+        dialogBtn.enabled = false;
+        float fadeCount = 0;
+        while (fadeCount < 1.0f){
+            fadeCount += 0.01f;
+            yield return new WaitForSeconds(0.01f);
+            img.color = new Color(0,0,0,fadeCount);
+        }
+        if(pc.exploreCount > pc.neglectCount) {
+                SceneManager.LoadScene("ExploreEnding");
+            }
+            else if(pc.exploreCount < pc.neglectCount) {
+                SceneManager.LoadScene("NeglectEnding");
+            }
     }
 }

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe43fd33770e7849bf53e90a709971e, type: 3}
+  m_Name: testEnding1
+  m_EditorClassIdentifier: 
+  dialogLines:
+  - "\uC774\uC815\uB3C4\uBA74 \uCDA9\uBD84\uD788 \uC870\uC0AC\uD588\uC5B4. \uD568\uC120\uC73C\uB85C
+    \uB3CC\uC544\uAC00\uC790."
+  selectLines: []
+  points: 
