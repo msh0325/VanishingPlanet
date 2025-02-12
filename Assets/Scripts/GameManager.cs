@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TMP_Text dialogText;
     [SerializeField] public GameObject btnUI;
     [SerializeField] public GameObject selectBtn;
+    [SerializeField] public GameObject minigame;
+    [SerializeField] public GameObject miniUI;
+    [SerializeField] public GameObject miniCamera;
+    [SerializeField] public GameObject mainCamera;
     [SerializeField] public TMP_Text[] btnText;
     [SerializeField] public Button dialogBtn;
     [SerializeField] public Timer timer;
@@ -23,6 +27,7 @@ public class GameManager : MonoBehaviour
     public GameObject explorePoint;
     private bool isTyping = false;
     public bool isTalking = false;
+    public bool isPlaying = false;
     private bool isEnding = false;
     private int endingPoint = 0;
     private Coroutine typeCoroutine;
@@ -62,7 +67,6 @@ public class GameManager : MonoBehaviour
             isTyping = false;
             ShowSelectBtn();
         }
-        
         else{
             if (!isEnding){
                 ShowNextLine();
@@ -103,9 +107,25 @@ public class GameManager : MonoBehaviour
         timer.isStart = false;
         isTalking = false;
         endingPoint = pc.exploreCount + pc.neglectCount;
-        if(endingPoint >= 1){
+        if(endingPoint >= 11){
             ShowEnding();
         }
+    }
+
+    // 1,2번 선택지 선택 시 미니게임 출력
+    public void StartMiniGame(){
+        minigame.SetActive(true);
+        isPlaying = true;
+        miniCamera.SetActive(true);
+        mainCamera.SetActive(false);
+    }
+
+    // 미니게임 끝날 시 실행
+    public void EndMiniGame(){
+        minigame.SetActive(false);
+        isPlaying=false;
+        mainCamera.SetActive(true);
+        miniCamera.SetActive(false);
     }
     
     // 엔딩 포인트 달성 시 엔딩 스크립트

@@ -12,22 +12,24 @@ public class Player : MonoBehaviour
     public DialogueData dialog;
     public bool findPoint = false;
     public int exploreCount,neglectCount = 0;
+    GameManager gm;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        gm = GameManager.instance;
     }
 
     // Update is called once per frame
     void Update()
     {
         // 플레이어 키보드 입력 받아서 스프라이트 뒤집기 & 상호작용 키
-        if(!(GameManager.instance.isTalking)){
+        if(!(gm.isTalking)&&!(gm.isPlaying)){
             float horizon = Input.GetAxisRaw("Horizontal");
             velocity = new Vector2(horizon,0);
 
             if(Input.GetKeyDown(KeyCode.E)&&findPoint){
                 Debug.Log("pressed E");
-                GameManager.instance.startDialog(dialog);
+                gm.startDialog(dialog);
             }
 
             if(horizon > 0){
@@ -42,10 +44,10 @@ public class Player : MonoBehaviour
 
     // 플레이어 이동
     void FixedUpdate(){
-        if(!(GameManager.instance.isTalking)){
+        if(!(gm.isTalking)&&!(gm.isPlaying)){
             rigid.velocity = new Vector2(velocity.x*speed,rigid.velocity.y);
         }
-        else if(GameManager.instance.isTalking){
+        else if(gm.isTalking||gm.isPlaying){
             rigid.velocity = Vector2.zero;
         }
     }
