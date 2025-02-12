@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: minitiles_3
+  m_Name: Tiles_minigame_10
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1847161257, guid: 248ab30a011123648ba12c50da3751d2, type: 3}
+  m_Sprite: {fileID: 6649153, guid: ac907a5df7005cc43a9d274fc9d02c02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

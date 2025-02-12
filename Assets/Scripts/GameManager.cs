@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         }
         dialogUI.SetActive(false);
         btnUI.SetActive(false);
+        minigame.SetActive(false);
 
         dialogBtn.onClick.AddListener(()=>{
             OnDialogClick();
