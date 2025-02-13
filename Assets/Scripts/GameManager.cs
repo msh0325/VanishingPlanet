@@ -13,9 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TMP_Text dialogText;
     [SerializeField] public GameObject btnUI;
     [SerializeField] public GameObject selectBtn;
-    [SerializeField] public GameObject minigame;
-    [SerializeField] public GameObject miniUI;
-    [SerializeField] public GameObject miniCamera;
+    [SerializeField] public MiniGameManager miniManager;
     [SerializeField] public GameObject mainCamera;
     [SerializeField] public TMP_Text[] btnText;
     [SerializeField] public Button dialogBtn;
@@ -38,7 +36,7 @@ public class GameManager : MonoBehaviour
         }
         dialogUI.SetActive(false);
         btnUI.SetActive(false);
-        minigame.SetActive(false);
+        miniManager.minigame.SetActive(false);
 
         dialogBtn.onClick.AddListener(()=>{
             OnDialogClick();
@@ -108,32 +106,35 @@ public class GameManager : MonoBehaviour
         timer.isStart = false;
         isTalking = false;
         endingPoint = pc.exploreCount + pc.neglectCount;
-        if(endingPoint >= 11){
-            ShowEnding();
-        }
     }
 
     // 1,2번 선택지 선택 시 미니게임 출력
-    public void StartMiniGame(){
-        minigame.SetActive(true);
+    public void StartMiniGame(int num){
         isPlaying = true;
-        miniCamera.SetActive(true);
+        miniManager.minigame.SetActive(true);
+        miniManager.miniGameMaps[num].SetActive(true);
         mainCamera.SetActive(false);
+        miniManager.pc.transform.localPosition = miniManager.pcPos[num];
+        miniManager.pc.GetComponent<MiniGamePC>().SaveFirstPos();
+        miniManager.num = num;
     }
 
     // 미니게임 끝날 시 실행
     public void EndMiniGame(){
-        minigame.SetActive(false);
         isPlaying=false;
+        miniManager.miniGameMaps[miniManager.num].SetActive(false);
+        miniManager.minigame.SetActive(false);
         mainCamera.SetActive(true);
-        miniCamera.SetActive(false);
+        ShowEnding();
     }
     
     // 엔딩 포인트 달성 시 엔딩 스크립트
-    private void ShowEnding(){
+    public void ShowEnding(){
         // 마무리 대사
-        isEnding = true;
-        startDialog(endingDialog);
+        if(endingPoint >=1){
+            isEnding = true;
+            startDialog(endingDialog);
+        }
        }
     
     // 스크립트 글자 하나하나 타이핑하기

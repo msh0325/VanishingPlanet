@@ -62,4 +62,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    public int miniNum(){
+        return dialog.number;
+    }
+
 }

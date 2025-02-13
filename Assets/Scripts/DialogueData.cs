@@ -12,4 +12,6 @@ public class DialogueData : ScriptableObject
     [TextArea] public string[] selectLines;
     [Header("탐험(Explore) = 1 / 방치(neglect) = 2")]
     public int[] points;
+    [Header("미니게임 번호(0~4)")]
+    public int number;
 }

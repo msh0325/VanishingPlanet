@@ -16,8 +16,6 @@ public class MiniGamePC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // 시작지점 저장
-        targetPos = transform.position;
         renderer = gameObject.GetComponent<SpriteRenderer>();
         gm = GameManager.instance;
     }
@@ -52,6 +50,7 @@ public class MiniGamePC : MonoBehaviour
             Vector3 newPos = targetPos + direction;
 
             if(CanMove(newPos)){
+                Debug.Log(targetPos);
                 targetPos = newPos;
                 StartCoroutine(Move());
             }
@@ -109,8 +108,14 @@ public class MiniGamePC : MonoBehaviour
         return false;
     }
 
+    // 누르는 방향에 따라 스프라이트 변경
     private void ChangeSprite(int num){
         renderer.sprite = pc[num];
+    }
+
+    // PC의 초기 위치 저장
+    public void SaveFirstPos(){
+        targetPos = transform.position;
     }
 
     private IEnumerator BoxMove(Vector3 playerNewPos, Vector3 direct){
