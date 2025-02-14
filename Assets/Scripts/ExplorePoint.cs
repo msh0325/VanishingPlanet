@@ -5,7 +5,13 @@ using UnityEngine;
 public class ExplorePoint : MonoBehaviour
 {
     private Player pc;
-    public DialogueData dialogueData;
+    [SerializeField] public DialogueData dialogueData;
+    [SerializeField] GameObject alarm;
+
+    void Start()
+    {
+        alarm.SetActive(false);   
+    }
 
     public void Interact(){
         GameManager.instance.startDialog(dialogueData);
@@ -15,6 +21,7 @@ public class ExplorePoint : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider){
         if(collider.tag == "Player"){
 
+            alarm.SetActive(true);
             Debug.Log("상호작용 가능");
             pc = collider.gameObject.GetComponent<Player>();
             if(pc != null){
@@ -28,6 +35,7 @@ public class ExplorePoint : MonoBehaviour
     // 플레이어가 조사 범위 밖으로 나감
     private void OnTriggerExit2D(Collider2D collider){
         if(collider.tag == "Player"){
+            alarm.SetActive(false);
             Debug.Log("상호작용 불가능");
             if(pc != null){
                 pc.findPoint = false;

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ddc343399ab38744d9cfe54adffed6b0
+guid: ae98439f501e92f48889eea255c565a9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 80
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,7 +70,7 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -95,7 +95,28 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: alarm
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecf9869de77a8a245ba538be52801ff8
+      internalID: -164243044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +127,34 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tiles_minigame 1_0: -1912299708
+      Tiles_minigame 1_1: -970396256
+      Tiles_minigame 1_10: 2106912030
+      Tiles_minigame 1_11: -317099469
+      Tiles_minigame 1_12: 1632598614
+      Tiles_minigame 1_13: 1004686512
+      Tiles_minigame 1_14: 150654273
+      Tiles_minigame 1_15: 1945174673
+      Tiles_minigame 1_16: -344005
+      Tiles_minigame 1_17: -1838915906
+      Tiles_minigame 1_18: -628507828
+      Tiles_minigame 1_19: -893931687
+      Tiles_minigame 1_2: -1906305986
+      Tiles_minigame 1_20: 1619959308
+      Tiles_minigame 1_21: -744787217
+      Tiles_minigame 1_22: -689119519
+      Tiles_minigame 1_23: 1791222862
+      Tiles_minigame 1_24: 730543313
+      Tiles_minigame 1_25: -1026457328
+      Tiles_minigame 1_3: 2076431993
+      Tiles_minigame 1_4: -235671354
+      Tiles_minigame 1_5: -1643997105
+      Tiles_minigame 1_6: -1502736210
+      Tiles_minigame 1_7: -680715608
+      Tiles_minigame 1_8: 286240955
+      Tiles_minigame 1_9: -761586309
+      alarm: -164243044
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Goal
   - Box
+  - Drone
   layers:
   - Default
   - TransparentFX

@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe43fd33770e7849bf53e90a709971e, type: 3}
   m_Name: testEnding1
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 583656496, guid: b6647b44d68f63942bed35c46d352010, type: 3}
   dialogLines:
   - "\uC774\uC815\uB3C4\uBA74 \uCDA9\uBD84\uD788 \uC870\uC0AC\uD588\uC5B4. \uD568\uC120\uC73C\uB85C
     \uB3CC\uC544\uAC00\uC790."
   selectLines: []
   points: 
+  number: 0

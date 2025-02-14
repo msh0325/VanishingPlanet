@@ -3,28 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class MiniGamePC : MonoBehaviour
+public class Drone : MonoBehaviour
 {
     [SerializeField] MiniGameManager miniGM;
     [SerializeField] public float speed = 8.0f;
-    [SerializeField] private Sprite[] pc;
-    SpriteRenderer minipcrenderer;
+    [SerializeField] public Tilemap obstaclesTile;
+    [SerializeField] private Sprite[] drone;
+    SpriteRenderer dronerenderer;
     GameManager gm;
     private Vector3 targetPos;
     private GameObject box;
-    public bool isMoving = false;
+    private bool isMoving = false;
     // Start is called before the first frame update
     void Start()
     {
-        minipcrenderer = gameObject.GetComponent<SpriteRenderer>();
+        dronerenderer = gameObject.GetComponent<SpriteRenderer>();
         gm = GameManager.instance;
+        SaveFirstPos();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 움직일 때는 입력 무시 또는 드론이 켜졌을 때 무시
-        if(isMoving || miniGM.droneON) return;
+        // 움직일 때는 입력 무시 또는 드론이 꺼졌을 때 무시
+        if(isMoving || !miniGM.droneON) return;
 
         Vector3 direction = Vector3.zero;
         
@@ -58,14 +60,6 @@ public class MiniGamePC : MonoBehaviour
             }
         }
         
-    }
-
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        // Goal에 닿으면 미니게임 끝
-        if(collider.tag == "Goal"){
-            gm.EndMiniGame();
-        }
     }
 
     // 플레이어가 움직일 방향으로 움직일 수있는지
@@ -107,23 +101,17 @@ public class MiniGamePC : MonoBehaviour
 
     // 누르는 방향에 따라 스프라이트 변경
     private void ChangeSprite(int num){
-        minipcrenderer.sprite = pc[num];
+        dronerenderer.sprite = drone[num];
     }
 
+    // 스프라이트 리셋
     public void ResetSprite(){
-        minipcrenderer.sprite = pc[2];
+        dronerenderer.sprite = drone[2];
     }
 
     // PC의 초기 위치 저장
     public void SaveFirstPos(){
         targetPos = transform.position;
-    }
-
-    // R키를 눌러 리셋시 실행
-    public void ResetPlayer(Vector3 pos){
-        transform.localPosition = pos;
-        SaveFirstPos();
-        minipcrenderer.sprite = pc[2];
     }
 
     private IEnumerator BoxMove(Vector3 playerNewPos, Vector3 direct){

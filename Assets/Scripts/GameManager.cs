@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Player pc;
     [SerializeField] public GameObject dialogUI;
     [SerializeField] public TMP_Text dialogText;
+    [SerializeField] public Image face;
     [SerializeField] public GameObject btnUI;
     [SerializeField] public GameObject selectBtn;
     [SerializeField] public MiniGameManager miniManager;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] DialogueData endingDialog;
     [SerializeField] Image blackImg;
     private string[] currentDialog;
+    private Sprite[] sprites;
     private int currentIndex;
     public GameObject explorePoint;
     private bool isTyping = false;
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
         currentDialog = dialogueData.dialogLines;
         currentIndex = 0;
         dialogUI.SetActive(true);
+        sprites = dialogueData.sprites;
         for(int i=0;i<3;i++){
             if(isEnding) break;
             btnText[i].text = dialogueData.selectLines[i];
@@ -81,6 +84,7 @@ public class GameManager : MonoBehaviour
         if (isTyping) return;
 
         if(currentIndex < currentDialog.Length){
+            face.sprite = sprites[currentIndex];
             typeCoroutine = StartCoroutine(TypeText(currentDialog[currentIndex]));
             currentIndex++;
         }
@@ -111,19 +115,15 @@ public class GameManager : MonoBehaviour
     // 1,2번 선택지 선택 시 미니게임 출력
     public void StartMiniGame(int num){
         isPlaying = true;
-        miniManager.minigame.SetActive(true);
-        miniManager.miniGameMaps[num].SetActive(true);
-        mainCamera.SetActive(false);
-        miniManager.pc.transform.localPosition = miniManager.pcPos[num];
-        miniManager.pc.GetComponent<MiniGamePC>().SaveFirstPos();
         miniManager.num = num;
+        mainCamera.SetActive(false);
+        miniManager.SetMiniGame();
     }
 
     // 미니게임 끝날 시 실행
     public void EndMiniGame(){
         isPlaying=false;
-        miniManager.miniGameMaps[miniManager.num].SetActive(false);
-        miniManager.minigame.SetActive(false);
+        miniManager.EndMiniGame();
         mainCamera.SetActive(true);
         ShowEnding();
     }
@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
     // 엔딩 포인트 달성 시 엔딩 스크립트
     public void ShowEnding(){
         // 마무리 대사
-        if(endingPoint >=1){
+        if(endingPoint >=11){
             isEnding = true;
             startDialog(endingDialog);
         }

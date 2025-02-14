@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe43fd33770e7849bf53e90a709971e, type: 3}
   m_Name: testDialog1
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -364169363, guid: b6647b44d68f63942bed35c46d352010, type: 3}
+  - {fileID: 1312277829, guid: b6647b44d68f63942bed35c46d352010, type: 3}
   dialogLines:
   - "\uC774 \uC794\uD574\uB294 \uC791\uBB3C\uC744 \uAE30\uB97C\uB54C \uC0AC\uC6A9\uD588\uB358
     \uAC83 \uAC19\uC544. \uC774 \uD589\uC131\uC5D0\uC11C \uC790\uB780\uAC78\uB85C
@@ -24,4 +27,4 @@ MonoBehaviour:
     \uD504\uB85C\uADF8\uB7A8\uC744 \uB3CC\uB824 \uBCF8\uB2E4."
   - "\uAC74\uB4DC\uB9AC\uC9C0 \uC54A\uACE0 \uADF8\uB0E5 \uB5A0\uB09C\uB2E4."
   points: 010000000100000002000000
-  number: 1
+  number: 0
