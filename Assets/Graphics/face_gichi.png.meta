@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: face_normal
+      name: GCface_normal
       rect:
         serializedVersion: 2
         x: 0
@@ -118,7 +118,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: face_right
+      name: GCface_right
       rect:
         serializedVersion: 2
         x: 64
@@ -139,7 +139,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: face_boring
+      name: GCface_boring
       rect:
         serializedVersion: 2
         x: 0
@@ -160,7 +160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: face_happy
+      name: GCface_happy
       rect:
         serializedVersion: 2
         x: 64
@@ -191,10 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      face_boring: 376258728
-      face_happy: 583656496
-      face_normal: 1312277829
-      face_right: -364169363
+      GCface_boring: 376258728
+      GCface_happy: 583656496
+      GCface_normal: 1312277829
+      GCface_right: -364169363
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

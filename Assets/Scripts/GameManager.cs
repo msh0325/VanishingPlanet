@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public bool isTalking = false;
     public bool isPlaying = false;
     private bool isEnding = false;
+    private bool isAfter = false;
     private int endingPoint = 0;
     private Coroutine typeCoroutine;
 
@@ -65,16 +66,31 @@ public class GameManager : MonoBehaviour
         if(isTyping){
             Debug.Log("typing-click");
             StopCoroutine(typeCoroutine);
-            dialogText.text = currentDialog[currentIndex-1];
-            isTyping = false;
-            ShowSelectBtn();
+            if(!isAfter){
+                dialogText.text = currentDialog[currentIndex-1];
+                isTyping = false;
+                ShowSelectBtn();
+            }
+            else if(isAfter){
+                dialogText.text = currentDialog[currentIndex];
+                isTyping = false;
+            }
         }
         else{
-            if (!isEnding){
+            if (isAfter){
+                endDialog();
+            }
+            else if(!isEnding){
                 ShowNextLine();
             }
-            else{
-                StartCoroutine(FadeWindows(blackImg));
+            else if(isEnding){
+                if(currentIndex < currentDialog.Length){
+                    ShowNextLine();
+                }
+                else{
+                    StartCoroutine(FadeWindows(blackImg));
+                }
+                //StartCoroutine(FadeWindows(blackImg));
             }
         }
     }
@@ -82,12 +98,18 @@ public class GameManager : MonoBehaviour
     // 스크립트 다음으로 넘기기 & 마지막 씬일때 선택지 보여주기
     public void ShowNextLine(){
         if (isTyping) return;
-
-        if(currentIndex < currentDialog.Length){
+        if(!isAfter){
+            if(currentIndex < currentDialog.Length){
             face.sprite = sprites[currentIndex];
             typeCoroutine = StartCoroutine(TypeText(currentDialog[currentIndex]));
             currentIndex++;
+            }
         }
+        else if(isAfter){
+            face.sprite = sprites[currentIndex];
+            typeCoroutine = StartCoroutine(TypeText(currentDialog[currentIndex]));
+        }
+        
         
     }
 
@@ -102,14 +124,20 @@ public class GameManager : MonoBehaviour
 
     // 스크립트 끝
     public void endDialog(){
-        explorePoint.GetComponent<ExplorePoint>().Finish_Explore();
-        explorePoint = null;
+        if(explorePoint !=null){
+            explorePoint.GetComponent<ExplorePoint>().Finish_Explore();
+            explorePoint = null;
+        }
         dialogUI.SetActive(false);
         selectBtn.SetActive(false);
         btnUI.SetActive(false);
         timer.isStart = false;
         isTalking = false;
         endingPoint = pc.exploreCount + pc.neglectCount;
+        if(isAfter){
+            isAfter = false;
+            ShowEnding();
+        }
     }
 
     // 1,2번 선택지 선택 시 미니게임 출력
@@ -125,13 +153,24 @@ public class GameManager : MonoBehaviour
         isPlaying=false;
         miniManager.EndMiniGame();
         mainCamera.SetActive(true);
-        ShowEnding();
+        AfterDialogue(pc.dialog,pc.miniNum());
+    }
+    
+    // 미니게임 엔딩 또는 3번째 선택지 선택시 스크립트 실행
+    public void AfterDialogue(DialogueData dialog, int num){
+        isTalking = true;
+        isAfter = true;
+        dialogUI.SetActive(true);
+        currentDialog = dialog.afterLines;
+        currentIndex = num;
+        sprites = dialog.afterSprites;
+        ShowNextLine();
     }
     
     // 엔딩 포인트 달성 시 엔딩 스크립트
     public void ShowEnding(){
         // 마무리 대사
-        if(endingPoint >=11){
+        if(endingPoint >=5){
             isEnding = true;
             startDialog(endingDialog);
         }
@@ -147,7 +186,9 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.03f);
         }
         isTyping = false;
-        ShowSelectBtn();
+        if(!isAfter){
+            ShowSelectBtn();
+        }
     }
     private IEnumerator FadeWindows(Image img){
         dialogBtn.enabled = false;

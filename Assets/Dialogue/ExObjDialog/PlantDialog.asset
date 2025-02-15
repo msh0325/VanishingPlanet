@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe43fd33770e7849bf53e90a709971e, type: 3}
+  m_Name: PlantDialog
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 583656496, guid: b6647b44d68f63942bed35c46d352010, type: 3}
+  - {fileID: 376258728, guid: b6647b44d68f63942bed35c46d352010, type: 3}
+  - {fileID: -364169363, guid: b6647b44d68f63942bed35c46d352010, type: 3}
+  dialogLines:
+  - "\uC624, \uC5EC\uAE30\uC5D0 \uC2DD\uBB3C\uC758 \uD754\uC801\uC774 \uB0A8\uC544\uC788\uB124.
+    \uC644\uC804\uD788 \uD669\uD3D0\uD654 \uB41C\uC904 \uC54C\uC558\uB294\uB370. "
+  - "\uBB3C\uB860 \uC0C1\uD0DC\uAC00 \uC88B\uC544\uBCF4\uC774\uC9C4 \uC54A\uB124.
+    \uACA8\uC6B0 \uC790\uB77C\uB09C\uAC83 \uAC19\uC544."
+  - "\uC2DD\uBB3C\uC744 \uC5B4\uB5BB\uAC8C \uD560\uAE4C?"
+  selectLines:
+  - "\uC774\uACF3\uC5D0\uC11C \uCCAB \uBC1C\uACAC\uD55C \uC2DD\uBB3C\uC774\uB2E4.
+    \uAE30\uB150\uC73C\uB85C \uAC00\uC838\uAC00 \uC5F4\uC2EC\uD788 \uD0A4\uC6B4\uB2E4. "
+  - "\uC8FC\uBCC0\uC5D0 \uBE44\uC2B7\uD574\uBCF4\uC774\uB294 \uC794\uD574\uB4E4\uACFC
+    \uD568\uAED8 \uAC00\uC838\uAC00 \uC774\uACF3\uC758 \uC0DD\uD0DC\uACC4\uAC00 \uC5B4\uB560\uB294\uC9C0
+    \uC2DC\uBBAC\uB808\uC774\uC158\uD574\uBCF8\uB2E4. "
+  - "\uC5B8\uC820\uAC04 \uB2E4\uC2DC \uC0AC\uB78C\uC774 \uC0B4 \uC218 \uC788\uC744\uC9C0\uB3C4
+    \uBAA8\uB978\uB2E4. \uAC74\uB4DC\uB9AC\uC9C0 \uC54A\uACE0 \uB5A0\uB09C\uB2E4."
+  points: 010000000100000002000000
+  number: 2
+  afterSprites:
+  - {fileID: 583656496, guid: b6647b44d68f63942bed35c46d352010, type: 3}
+  - {fileID: -364169363, guid: b6647b44d68f63942bed35c46d352010, type: 3}
+  - {fileID: 583656496, guid: b6647b44d68f63942bed35c46d352010, type: 3}
+  afterLines:
+  - "\uC5EC\uAE30\uC5D0\uC120 \uC790\uB77C\uAE30 \uD798\uB4E4\uAC70\uC57C. \uC870\uC2EC\uD788
+    \uC62E\uACA8\uC11C \uC798 \uD0A4\uC6CC\uC918\uC57C\uACA0\uB2E4."
+  - "\uC0DD\uAC01\uBCF4\uB2E4 \uB9CE\uC740 \uC2DD\uBB3C\uB4E4\uC774 \uC0B4\uC558\uB358
+    \uAC83 \uAC19\uC544. \uC5B4\uCA4C\uB2E4\uAC00 \uC774\uB807\uAC8C \uB418\uBC84\uB9B0\uAC78\uAE4C.."
+  - "\uC774 \uB140\uC11D\uC774 \uC790\uB77C\uC11C \uC0DD\uBA85\uC774 \uC0B4 \uC218
+    \uC788\uB294 \uD658\uACBD\uC774 \uB420\uC9C0 \uBAB0\uB77C. \uAC00\uC838\uAC00\uAE30\uC5D0\uB294
+    \uC870\uAE08 \uADF8\uB807\uACE0 \uAE30\uB150\uC0AC\uC9C4 \uC815\uB3C4\uB9CC \uCC0D\uC5B4\uB458\uAE4C."

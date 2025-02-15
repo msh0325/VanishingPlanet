@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe43fd33770e7849bf53e90a709971e, type: 3}
+  m_Name: EndingDialog
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 907932959, guid: 245fc83b81560854c814dacb04a7667c, type: 3}
+  - {fileID: -364169363, guid: b6647b44d68f63942bed35c46d352010, type: 3}
+  - {fileID: 543471472, guid: 245fc83b81560854c814dacb04a7667c, type: 3}
+  - {fileID: 583656496, guid: b6647b44d68f63942bed35c46d352010, type: 3}
+  - {fileID: 1463546909, guid: 245fc83b81560854c814dacb04a7667c, type: 3}
+  - {fileID: 583656496, guid: b6647b44d68f63942bed35c46d352010, type: 3}
+  dialogLines:
+  - "\uC774\uC81C \uC2AC\uC2AC \uB3CC\uC544\uC640, \uAE30\uCE58. \uC2AC\uC2AC \uB2E4\uC74C
+    \uD589\uC120\uC9C0\uB85C \uAC00\uBCF4\uC790\uACE0."
+  - "\uC544, \uBC8C\uC368 \uC2DC\uAC04\uC774 \uB2E4 \uB41C\uAC70\uC57C?"
+  - "\uADF8\uB798. \uAE30\uB2E4\uB9AC\uB2E4 \uB299\uC5B4 \uC8FD\uACA0\uC5B4. \uAD81\uAE08\uC99D\uC740
+    \uD574\uACB0\uD55C\uAC70\uC57C?"
+  - "\uBB50.. \uAF64 \uB9CE\uC740\uAC78 \uCC3E\uC558\uC5B4. \uB3CC\uC544\uAC00\uC11C
+    \uC54C\uB824\uC904\uAC8C."
+  - "\uB09C \uB531\uD788 \uAD81\uAE08\uD558\uC9C0 \uC54A\uC9C0\uB9CC.. \uC5BC\uB978
+    \uB3CC\uC544\uC624\uAE30\uB098 \uD574."
+  - "\uC54C\uACA0\uC5B4. \uC774\uC815\uB3C4\uBA74 \uCDA9\uBD84\uD558\uC9C0. \uC6B0\uC8FC\uC120\uC73C\uB85C
+    \uB3CC\uC544\uAC00\uC790."
+  selectLines: []
+  points: 
+  number: 0
+  afterSprites: []
+  afterLines: []

@@ -33,7 +33,8 @@ public class DialogPannel : MonoBehaviour
             Debug.Log("3번 선택");
             gm.pc.countPoints(2);
             gm.endDialog();
-            gm.ShowEnding();
+            gm.AfterDialogue(gm.pc.dialog,2);
+            //gm.ShowEnding();
         });
     }
 

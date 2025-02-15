@@ -16,4 +16,8 @@ public class DialogueData : ScriptableObject
     public int[] points;
     [Header("미니게임 번호(0~4)")]
     public int number;
+    [Header("선택지 이후 지문 이미지")]
+    public Sprite[] afterSprites;
+    [Header("선택지 이후 지문")]
+    [TextArea] public string[] afterLines;
 }
