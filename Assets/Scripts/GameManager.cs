@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
         isPlaying=false;
         miniManager.EndMiniGame();
         mainCamera.SetActive(true);
-        AfterDialogue(pc.dialog,pc.miniNum());
+        AfterDialogue(pc.dialog,pc.selectedNum());
     }
     
     // 미니게임 엔딩 또는 3번째 선택지 선택시 스크립트 실행

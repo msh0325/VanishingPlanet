@@ -17,6 +17,7 @@ public class MiniGameManager : MonoBehaviour
     [SerializeField] public GameObject miniCamera;
     [SerializeField] public int num;
     [SerializeField] public bool droneON = false;
+    public bool isTele = false;
     // Start is called before the first frame update
     void Start()
     {

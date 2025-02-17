@@ -65,5 +65,8 @@ public class Player : MonoBehaviour
     public int miniNum(){
         return dialog.number;
     }
+    public int selectedNum(){
+        return dialog.selectedNum;
+    }
 
 }

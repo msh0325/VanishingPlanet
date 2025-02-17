@@ -17,6 +17,7 @@ public class DialogPannel : MonoBehaviour
             Debug.Log("1번 선택");
             gm.pc.countPoints(0);
             gm.endDialog();
+            gm.pc.dialog.selectedNum = 0;
             gm.StartMiniGame(gm.pc.miniNum());
         });
 
@@ -25,6 +26,7 @@ public class DialogPannel : MonoBehaviour
             Debug.Log("2번 선택");
             gm.pc.countPoints(1);
             gm.endDialog();
+            gm.pc.dialog.selectedNum = 1;
             gm.StartMiniGame(gm.pc.miniNum());
         });
 
@@ -33,6 +35,7 @@ public class DialogPannel : MonoBehaviour
             Debug.Log("3번 선택");
             gm.pc.countPoints(2);
             gm.endDialog();
+            gm.pc.dialog.selectedNum = 2;
             gm.AfterDialogue(gm.pc.dialog,2);
             //gm.ShowEnding();
         });
