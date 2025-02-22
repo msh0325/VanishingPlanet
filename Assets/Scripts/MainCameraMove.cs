@@ -17,10 +17,10 @@ public class MainCameraMove : MonoBehaviour
 
     void FixedUpdate(){
         // 나중에 맵을 만든 후 수정하러 오기
-        float Xlimit = 2000;
+        float Xlimit = 70f;
         float Xclamp;
 
-        Xclamp = Mathf.Clamp(target.transform.position.x + xPos,-10,Xlimit);
+        Xclamp = Mathf.Clamp(target.transform.position.x + xPos,-6,Xlimit);
         Camera_pos = new Vector3(Xclamp,yPos,zPos);
 
         transform.position = Vector3.Lerp(transform.position,Camera_pos,Time.deltaTime*speed);

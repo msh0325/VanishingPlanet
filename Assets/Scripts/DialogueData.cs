@@ -14,9 +14,9 @@ public class DialogueData : ScriptableObject
     [TextArea] public string[] selectLines;
     [Header("탐험(Explore) = 1 / 방치(neglect) = 2")]
     public int[] points;
-    [Header("미니게임 번호(0~4)")]
     [Header("플레이어가 선택한 선택지 번호")]
     public int selectedNum;
+    [Header("미니게임 번호(0~4)")]
     public int number;
     [Header("선택지 이후 지문 이미지")]
     public Sprite[] afterSprites;

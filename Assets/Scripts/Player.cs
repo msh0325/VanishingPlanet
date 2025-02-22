@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rigid;
     public DialogueData dialog;
     public bool findPoint = false;
+    public bool onRocket = false;
     public int exploreCount,neglectCount = 0;
     GameManager gm;
     void Start()
@@ -30,6 +32,12 @@ public class Player : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E)&&findPoint){
                 Debug.Log("pressed E");
                 gm.startDialog(dialog);
+            }
+
+            // 조사하지 않고 로켓 상호작용시 히든엔딩
+            if(Input.GetKeyDown(KeyCode.E)&&onRocket&&exploreCount + neglectCount == 0){
+                Debug.Log("hidden");
+                SceneManager.LoadScene("HiddenEnding");
             }
 
             if(horizon > 0){
