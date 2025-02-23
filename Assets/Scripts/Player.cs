@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
@@ -8,6 +9,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] float speed = 10.0f;
+    [SerializeField] BackGround bg;
     Vector2 velocity;
     Rigidbody2D rigid;
     public DialogueData dialog;
@@ -15,6 +17,7 @@ public class Player : MonoBehaviour
     public bool onRocket = false;
     public int exploreCount,neglectCount = 0;
     GameManager gm;
+
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();

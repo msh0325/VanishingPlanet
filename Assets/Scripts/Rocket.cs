@@ -11,7 +11,7 @@ public class Rocket : MonoBehaviour
         }
     }
 
-    private void OTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.tag == "Player"){
             collision.GetComponent<Player>().onRocket = false;
