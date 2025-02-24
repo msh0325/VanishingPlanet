@@ -8,6 +8,7 @@ public class DialogPannel : MonoBehaviour
     [SerializeField] Button selectbtn1;
     [SerializeField] Button selectbtn2;
     [SerializeField] Button selectbtn3;
+    [SerializeField] EndingData endingData;
     GameManager gm;
     void Start()
     {
@@ -18,6 +19,7 @@ public class DialogPannel : MonoBehaviour
             gm.pc.countPoints(0);
             gm.endDialog();
             gm.pc.dialog.selectedNum = 0;
+            endingData.selectnum[gm.pc.miniNum()] = 0;
             gm.StartMiniGame(gm.pc.miniNum());
         });
 
@@ -27,6 +29,7 @@ public class DialogPannel : MonoBehaviour
             gm.pc.countPoints(1);
             gm.endDialog();
             gm.pc.dialog.selectedNum = 1;
+            endingData.selectnum[gm.pc.miniNum()] = 1;
             gm.StartMiniGame(gm.pc.miniNum());
         });
 
@@ -36,6 +39,7 @@ public class DialogPannel : MonoBehaviour
             gm.pc.countPoints(2);
             gm.endDialog();
             gm.pc.dialog.selectedNum = 2;
+            endingData.selectnum[gm.pc.miniNum()] = 2;
             gm.AfterDialogue(gm.pc.dialog,2);
             //gm.ShowEnding();
         });

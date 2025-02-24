@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "NewDialogue", menuName = "Dialogue")]
+[CreateAssetMenu(fileName = "NewDialogue", menuName = "Dialogue/Dialogue")]
 public class DialogueData : ScriptableObject
 {
     [Header("얼굴 이미지")]

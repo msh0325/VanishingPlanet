@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     private bool isAfter = false;
     private int endingPoint = 0;
     private Coroutine typeCoroutine;
+    private GameObject endingData;
 
     void Awake(){
         if (instance == null){
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
         dialogUI.SetActive(false);
         btnUI.SetActive(false);
         miniManager.minigame.SetActive(false);
+        endingData = GameObject.Find("EndingData");
 
         dialogBtn.onClick.AddListener(()=>{
             OnDialogClick();
@@ -90,7 +92,6 @@ public class GameManager : MonoBehaviour
                 else{
                     StartCoroutine(FadeWindows(blackImg));
                 }
-                //StartCoroutine(FadeWindows(blackImg));
             }
         }
     }
@@ -169,8 +170,13 @@ public class GameManager : MonoBehaviour
     
     // 엔딩 포인트 달성 시 엔딩 스크립트
     public void ShowEnding(){
-        // 마무리 대사
         if(endingPoint >=5){
+            if(pc.exploreCount > pc.neglectCount){
+                endingData.GetComponent<EndingData>().resultnum = 0;
+            }
+            else {
+                endingData.GetComponent<EndingData>().resultnum = 1;
+            }
             isEnding = true;
             startDialog(endingDialog);
         }
@@ -198,11 +204,6 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             img.color = new Color(0,0,0,fadeCount);
         }
-        if(pc.exploreCount > pc.neglectCount) {
-                SceneManager.LoadScene("ExploreEnding");
-            }
-            else if(pc.exploreCount < pc.neglectCount) {
-                SceneManager.LoadScene("NeglectEnding");
-            }
+        SceneManager.LoadScene("NormalEnding");
     }
 }

@@ -13,6 +13,10 @@ public class TitlePannel : MonoBehaviour
     void Start()
     {
         startBtn.onClick.AddListener(()=>{
+            GameObject data = GameObject.Find("EndingData");
+            if(data != null){
+                data.GetComponent<EndingData>().ResetData();
+            }
             SceneManager.LoadScene("ExploreScene");
         });
 
