@@ -6402,6 +6402,7 @@ GameObject:
   - component: {fileID: 622583336}
   - component: {fileID: 622583339}
   - component: {fileID: 622583340}
+  - component: {fileID: 622583341}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -6423,6 +6424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   bg: {fileID: 0}
+  animator: {fileID: 0}
   dialog: {fileID: 0}
   findPoint: 0
   onRocket: 0
@@ -6448,7 +6450,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 98b879b2893fcf64a8dd25d7fb6e642a, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6469,12 +6471,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 7c6e161d2da750c459918fe867c8c04d, type: 3}
+  m_Sprite: {fileID: 760118146, guid: a07e95759e245194f9197c7191f83d98, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 2, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6554,9 +6556,30 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.2}
-  m_Size: {x: 1, y: 2.2}
+  m_Offset: {x: 0.1, y: 1.5}
+  m_Size: {x: 1.1, y: 2.8}
   m_Direction: 0
+--- !u!95 &622583341
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622583335}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7c967ab795a833a42b1ad57eee65e419, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &628923152
 GameObject:
   m_ObjectHideFlags: 0
@@ -20227,6 +20250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectnum: 
+  resultnum: 0
 --- !u!4 &1774281128
 Transform:
   m_ObjectHideFlags: 0

@@ -10,18 +10,21 @@ public class Player : MonoBehaviour
 
     [SerializeField] float speed = 10.0f;
     [SerializeField] BackGround bg;
+    [SerializeField] Animator animator;
     Vector2 velocity;
     Rigidbody2D rigid;
     public DialogueData dialog;
     public bool findPoint = false;
     public bool onRocket = false;
     public int exploreCount,neglectCount = 0;
+    private float horizon;
     GameManager gm;
 
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         gm = GameManager.instance;
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,7 +32,7 @@ public class Player : MonoBehaviour
     {
         // 플레이어 키보드 입력 받아서 스프라이트 뒤집기 & 상호작용 키
         if(!(gm.isTalking)&&!(gm.isPlaying)){
-            float horizon = Input.GetAxisRaw("Horizontal");
+            horizon = Input.GetAxisRaw("Horizontal");
             velocity = new Vector2(horizon,0);
 
             if(Input.GetKeyDown(KeyCode.E)&&findPoint){
@@ -55,8 +58,12 @@ public class Player : MonoBehaviour
 
     // 플레이어 이동
     void FixedUpdate(){
+
         if(!(gm.isTalking)&&!(gm.isPlaying)){
             rigid.velocity = new Vector2(velocity.x*speed,rigid.velocity.y);
+            // horizon의 값이 0이 아니면(즉, 움직일 시) true 반환 > run 애니 실행
+            // horizon의 값이 0이라면 (즉, 가만히 있을 시) false 반환 > idle 애니 실행
+            animator.SetBool("isRun",horizon != 0);
         }
         else if(gm.isTalking||gm.isPlaying){
             rigid.velocity = Vector2.zero;

@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73abbc572a695a42991da5e50b613db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectnum: 0000000000000000000000000000000000000000
+  selectnum: 0200000002000000020000000200000001000000
   resultnum: 0
 --- !u!4 &1003857069
 Transform:
