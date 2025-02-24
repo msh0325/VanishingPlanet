@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Timer timer;
     [SerializeField] DialogueData endingDialog;
     [SerializeField] Image blackImg;
+    [SerializeField] private TextAudio beep;
     private string[] currentDialog;
     private Sprite[] sprites;
     private int currentIndex;
@@ -69,7 +70,16 @@ public class GameManager : MonoBehaviour
             Debug.Log("typing-click");
             StopCoroutine(typeCoroutine);
             if(!isAfter){
-                dialogText.text = currentDialog[currentIndex-1];
+                if(currentDialog[currentIndex-1].StartsWith("[")){
+                    int endIndex = currentDialog[currentIndex-1].IndexOf("]");
+                    if(endIndex > 0){
+                        // 캐릭터 이름 제거 후 스크립트만 추출
+                        dialogText.text = currentDialog[currentIndex-1].Substring(endIndex + 1).Trim();
+                    }  
+                }
+                else{
+                    dialogText.text = currentDialog[currentIndex-1];
+                }
                 isTyping = false;
                 ShowSelectBtn();
             }
@@ -184,13 +194,33 @@ public class GameManager : MonoBehaviour
     
     // 스크립트 글자 하나하나 타이핑하기
     private IEnumerator TypeText(string text){
+        // 비프음 구별할 캐릭터 이름. 기본값은 player
+        string characterName = "Player";
+
+        // 스크립트에서 캐릭터 이름 추출하기. 엔딩에만 필요
+        if(isEnding){
+            if(text.StartsWith("[")){
+                int endIndex = text.IndexOf("]");
+                if(endIndex > 0){
+                    // 스크립트 앞의 캐릭터 이름 추출
+                    characterName = text.Substring(1,endIndex - 1);
+
+                    // 캐릭터 이름 제거 후 스크립트만 추출
+                    text = text.Substring(endIndex + 1).Trim();
+                }  
+            }
+        }
+
         isTyping = true;
         dialogText.text = "";
 
         foreach(char letter in text){
             dialogText.text +=letter;
-            yield return new WaitForSeconds(0.03f);
+            beep.SetCharacterBeep(characterName);
+            beep.PlayBeep();
+            yield return new WaitForSeconds(0.1f);
         }
+        
         isTyping = false;
         if(!isAfter){
             ShowSelectBtn();
