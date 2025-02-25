@@ -13,8 +13,12 @@ public class EndingScripts : MonoBehaviour
     [SerializeField] TMP_Text resultText;
     [SerializeField] Image img;
     [SerializeField] Button btn;
+    [SerializeField] TextAudio typing;
     private bool isResult = false;
     private bool scriptend = false;
+    private string soundName = "Result";
+    private float soundCooldown = 0.15f;
+    private float lastSoundTime = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,18 +52,24 @@ public class EndingScripts : MonoBehaviour
     }
 
     private IEnumerator TypeText(string text){
+        typing.SetCharacterBeep(soundName);
         if(!isResult){
             exploreText.text = "";
             foreach(char letter in text){
-            exploreText.text += letter;
-            yield return new WaitForSeconds(0.03f);
+                exploreText.text += letter;
+                if(Time.time - lastSoundTime >= soundCooldown){
+                    typing.PlayBeep();
+                    lastSoundTime = Time.time;
+                }
+                yield return new WaitForSeconds(0.1f);
             }
         }
         else if(isResult){
             resultText.text = "탐사 결과 : ";
             foreach(char letter in text){
                 resultText.text += letter;
-                yield return new WaitForSeconds(0.03f);
+                typing.PlayBeep();
+                yield return new WaitForSeconds(0.1f);
             }
             scriptend = true;
         }

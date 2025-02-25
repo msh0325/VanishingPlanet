@@ -7,39 +7,41 @@ public class TextAudio : MonoBehaviour
     public AudioSource audioSource;
     private Dictionary<string, AudioClip> beepsounds;
     private string nowCharacter;
+    [SerializeField] public AudioClip speech;
+    [SerializeField] public AudioClip typing;
+
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         beepsounds = new Dictionary<string, AudioClip>{
-            {"Player", GenerateBeep(220,0.15f)},
-            {"NPC", GenerateBeep(440,0.15f)}
+            {"Player",speech},
+            {"NPC",speech}
         };
-        audioSource.volume = 0.4f;
     }
 
     public void SetCharacterBeep(string name){
         nowCharacter = name;
     }
-
     public void PlayBeep(){
-        if(nowCharacter != null && beepsounds.ContainsKey(nowCharacter)){
-            audioSource.PlayOneShot(beepsounds[nowCharacter]);
+        switch (nowCharacter){
+            case "Player" :
+            audioSource.volume = 1.2f;
+                audioSource.pitch = 1.0f;
+                audioSource.PlayOneShot(speech);
+                break;
+            case "NPC" :
+                audioSource.volume = 1.2f;
+                audioSource.pitch = 1.5f;
+                audioSource.PlayOneShot(speech);
+                break;
+            case "Result" :
+                audioSource.volume = 0.6f;
+                audioSource.pitch = 1.0f;
+                audioSource.PlayOneShot(typing);
+                break;
         }
-    }
-
-    AudioClip GenerateBeep(float frequency, float duration){
-        int sampleRate = 44100;
-        int sampleLength = (int)(sampleRate * duration);
-        float[] samples = new float[sampleLength];
-
-        for (int i=0; i<sampleLength;i++){
-            samples[i] = Mathf.Sin(2 * Mathf.PI * frequency * i / (float) sampleRate);
-        }
-
-        AudioClip clip = AudioClip.Create("Beep", sampleLength, 1, sampleRate, false);
-        clip.SetData(samples,0);
-        return clip;
+        
     }
 }

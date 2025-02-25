@@ -24,7 +24,7 @@ public class MiniGamePC : MonoBehaviour
     void Update()
     {
         // 움직일 때는 입력 무시 또는 드론이 켜졌을 때 무시
-        if(isMoving || miniGM.droneON) return;
+        if(isMoving || miniGM.droneON || miniGM.miniTutorial.activeSelf) return;
 
         Vector3 direction = Vector3.zero;
         

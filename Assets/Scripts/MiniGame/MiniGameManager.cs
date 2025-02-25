@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MiniGameManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class MiniGameManager : MonoBehaviour
     [SerializeField] public GameObject pc;
     [SerializeField] public GameObject minigame;
     [SerializeField] public GameObject miniCamera;
+    [SerializeField] public GameObject miniTutorial;
+    [SerializeField] public Button startBtn;
     [SerializeField] public int num;
     [SerializeField] public bool droneON = false;
     public bool isTele = false;
@@ -22,13 +25,17 @@ public class MiniGameManager : MonoBehaviour
     void Start()
     {
         gm =GameManager.instance;
+
+        startBtn.onClick.AddListener(()=>{
+            miniTutorial.SetActive(false);
+        });
     }
 
     // Update is called once per frame
     void Update()
     {
         // 미니게임 플레이할 때 R키를 누르면 맵 초기화
-        if(gm.isPlaying && Input.GetKeyDown(KeyCode.R)){
+        if(gm.isPlaying && Input.GetKeyDown(KeyCode.R)&&!miniTutorial.activeSelf){
             Debug.Log("reset game");
             pc.GetComponent<MiniGamePC>().ResetPlayer(pcPos[num]);
             objects[num].GetComponent<MiniGameObject>().ResetPos();
@@ -37,6 +44,9 @@ public class MiniGameManager : MonoBehaviour
     }
 
     public void SetMiniGame(){
+        if(gm.pc.exploreCount + gm.pc.neglectCount <= 1){
+            miniTutorial.SetActive(true);
+        }
         minigame.SetActive(true);
         miniGameMaps[num].SetActive(true);
         pc.transform.localPosition = pcPos[num];
@@ -49,6 +59,7 @@ public class MiniGameManager : MonoBehaviour
         pc.GetComponent<MiniGamePC>().ResetSprite();
         miniGameMaps[num].SetActive(false);
         minigame.SetActive(false);
+        miniTutorial.SetActive(false);
     }
 
 }

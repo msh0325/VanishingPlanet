@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe43fd33770e7849bf53e90a709971e, type: 3}
+  m_Name: Prolog
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 907932959, guid: 245fc83b81560854c814dacb04a7667c, type: 3}
+  - {fileID: 786762830, guid: 245fc83b81560854c814dacb04a7667c, type: 3}
+  - {fileID: 583656496, guid: b6647b44d68f63942bed35c46d352010, type: 3}
+  - {fileID: 907932959, guid: 245fc83b81560854c814dacb04a7667c, type: 3}
+  - {fileID: 583656496, guid: b6647b44d68f63942bed35c46d352010, type: 3}
+  - {fileID: 543471472, guid: 245fc83b81560854c814dacb04a7667c, type: 3}
+  - {fileID: 376258728, guid: b6647b44d68f63942bed35c46d352010, type: 3}
+  dialogLines:
+  - "[NPC]\uB4DC\uB514\uC5B4 \uB3C4\uCC29\uD588\uB124. \uB2E4\uD589\uD788 \uCC29\uB959\uD560
+    \uACF3\uC774 \uC788\uC5B4\uC11C \uB2E4\uD589\uC774\uC57C."
+  - "[NPC]\uC624\uB798 \uC788\uAE34 \uD798\uB4E4\uAC70\uC57C. \uBE60\uB974\uAC8C
+    \uBCF4\uACE0\uC2F6\uC740\uAC83\uB9CC \uBCF4\uACE0 \uC640."
+  - "[Player]\uC54C\uACA0\uC5B4, \uBE60\uB974\uAC8C \uBA87\uAC1C\uB9CC \uBCF4\uACE0
+    \uC62C\uAC8C."
+  - "[NPC]\uC870\uC0AC \uB3C4\uAD6C\uC758 \uC791\uB3D9\uBC95\uC740 \uC54C\uC9C0?"
+  - "[Player]\uB2F9\uC5F0\uD558\uC9C0! \uC870\uC0AC\uD558\uACE0 \uC2F6\uC740 \uB300\uC0C1
+    \uC55E\uC5D0\uC11C <E> \uD0A4\uB97C \uB20C\uB7EC \uC791\uB3D9\uD558\uBA74 \uB418\uC796\uC544!"
+  - "[NPC]\uC798 \uC54C\uACE0\uC788\uB124. \uB108\uBB34 \uC624\uB798 \uC788\uC73C\uBA74
+    \uC704\uD5D8\uD558\uB2C8, \uB0B4\uAC00 \uC5F0\uB77D\uD558\uBA74 \uBCF5\uADC0\uD574."
+  - "[Player]\uC54C\uACA0\uC5B4. \uBE60\uB974\uAC8C \uC870\uC0AC\uD558\uACE0 \uC62C\uAC8C."
+  selectLines: []
+  points: 
+  selectedNum: 0
+  number: 0
+  afterSprites: []
+  afterLines: []

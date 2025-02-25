@@ -41,10 +41,11 @@ public class Player : MonoBehaviour
             }
 
             // 조사하지 않고 로켓 상호작용시 히든엔딩
-            if(Input.GetKeyDown(KeyCode.E)&&onRocket&&exploreCount + neglectCount == 0){
+            // 나중에 추가하고 주석 풀기
+            /*if(Input.GetKeyDown(KeyCode.E)&&onRocket&&exploreCount + neglectCount == 0){
                 Debug.Log("hidden");
                 SceneManager.LoadScene("HiddenEnding");
-            }
+            }*/
 
             if(horizon > 0){
                 transform.rotation = Quaternion.Euler(0,0,0);

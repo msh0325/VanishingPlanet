@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TMP_Text[] btnText;
     [SerializeField] public Button dialogBtn;
     [SerializeField] public Timer timer;
+    [SerializeField] DialogueData prologDialog;
     [SerializeField] DialogueData endingDialog;
     [SerializeField] Image blackImg;
     [SerializeField] private TextAudio beep;
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
     private bool isTyping = false;
     public bool isTalking = false;
     public bool isPlaying = false;
+    private bool isProlog = false;
     private bool isEnding = false;
     private bool isAfter = false;
     private int endingPoint = 0;
@@ -43,6 +45,8 @@ public class GameManager : MonoBehaviour
         btnUI.SetActive(false);
         miniManager.minigame.SetActive(false);
         endingData = GameObject.Find("EndingData");
+        isProlog = true;
+        startDialog(prologDialog);
 
         dialogBtn.onClick.AddListener(()=>{
             OnDialogClick();
@@ -58,7 +62,7 @@ public class GameManager : MonoBehaviour
         dialogUI.SetActive(true);
         sprites = dialogueData.sprites;
         for(int i=0;i<3;i++){
-            if(isEnding) break;
+            if(isEnding||isProlog) break;
             btnText[i].text = dialogueData.selectLines[i];
         }
         ShowNextLine();
@@ -67,7 +71,6 @@ public class GameManager : MonoBehaviour
     // 대화창 클릭했을 때 스크립트 출력중이면 한번에 출력 & 엔딩이면 화면 어두워지고 씬 전환
     private void OnDialogClick(){
         if(isTyping){
-            Debug.Log("typing-click");
             StopCoroutine(typeCoroutine);
             if(!isAfter){
                 if(currentDialog[currentIndex-1].StartsWith("[")){
@@ -81,7 +84,9 @@ public class GameManager : MonoBehaviour
                     dialogText.text = currentDialog[currentIndex-1];
                 }
                 isTyping = false;
-                ShowSelectBtn();
+                if(!isProlog){
+                    ShowSelectBtn();
+                }
             }
             else if(isAfter){
                 dialogText.text = currentDialog[currentIndex];
@@ -92,8 +97,17 @@ public class GameManager : MonoBehaviour
             if (isAfter){
                 endDialog();
             }
-            else if(!isEnding){
+            else if(!isEnding&&!isProlog){
                 ShowNextLine();
+            }
+            else if(isProlog){
+                if(currentIndex < currentDialog.Length){
+                    ShowNextLine();
+                }
+                else{
+                    endDialog();
+                }
+                
             }
             else if(isEnding){
                 if(currentIndex < currentDialog.Length){
@@ -111,9 +125,9 @@ public class GameManager : MonoBehaviour
         if (isTyping) return;
         if(!isAfter){
             if(currentIndex < currentDialog.Length){
-            face.sprite = sprites[currentIndex];
-            typeCoroutine = StartCoroutine(TypeText(currentDialog[currentIndex]));
-            currentIndex++;
+                face.sprite = sprites[currentIndex];
+                typeCoroutine = StartCoroutine(TypeText(currentDialog[currentIndex]));
+                currentIndex++;
             }
         }
         else if(isAfter){
@@ -145,6 +159,7 @@ public class GameManager : MonoBehaviour
         timer.isStart = false;
         isTalking = false;
         endingPoint = pc.exploreCount + pc.neglectCount;
+        if(isProlog) isProlog = false;
         if(isAfter){
             isAfter = false;
             ShowEnding();
@@ -198,7 +213,7 @@ public class GameManager : MonoBehaviour
         string characterName = "Player";
 
         // 스크립트에서 캐릭터 이름 추출하기. 엔딩에만 필요
-        if(isEnding){
+        if(isEnding||isProlog){
             if(text.StartsWith("[")){
                 int endIndex = text.IndexOf("]");
                 if(endIndex > 0){
@@ -222,7 +237,7 @@ public class GameManager : MonoBehaviour
         }
         
         isTyping = false;
-        if(!isAfter){
+        if(!isAfter&&!isProlog){
             ShowSelectBtn();
         }
     }
