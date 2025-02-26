@@ -14,6 +14,9 @@ public class EndingScripts : MonoBehaviour
     [SerializeField] Image img;
     [SerializeField] Button btn;
     [SerializeField] TextAudio typing;
+    [SerializeField] GameObject[] ending;
+    private GameObject nowEnding;
+    
     private bool isResult = false;
     private bool scriptend = false;
     private string soundName = "Result";
@@ -43,6 +46,7 @@ public class EndingScripts : MonoBehaviour
         $" - {dialog.gunLines[data.selectnum[3]]}\n\n" + 
         $" - {dialog.skullLines[data.selectnum[4]]}";
         string result = dialog.resultLine[data.resultnum];
+        nowEnding = ending[data.resultnum];
         StartCoroutine(CoroutineSequence(exDialog,result));
     }
 
@@ -50,6 +54,7 @@ public class EndingScripts : MonoBehaviour
         yield return StartCoroutine(TypeText(exploreString));
         isResult = true;
         yield return StartCoroutine(TypeText(resultString));
+        nowEnding.SetActive(true);
     }
 
     private IEnumerator TypeText(string text){
@@ -69,7 +74,10 @@ public class EndingScripts : MonoBehaviour
             resultText.text = "탐사 결과 : ";
             foreach(char letter in text){
                 resultText.text += letter;
-                typing.PlayBeep();
+                if(Time.time - lastSoundTime >= soundCooldown){
+                    typing.PlayBeep();
+                    lastSoundTime = Time.time;
+                }
                 yield return new WaitForSeconds(0.1f);
             }
             scriptend = true;
