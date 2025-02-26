@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ExploreScene.unity
     guid: 706287fa239332e40ab057f661efa449
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/HiddenEnding.unity
     guid: b110791cb15bd294fac2f79b2a6d400e
   - enabled: 1

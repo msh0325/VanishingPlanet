@@ -9,6 +9,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [SerializeField] public Player pc;
+    [SerializeField] public Button optionBtn;
+    [SerializeField] public Button cancleBtn;
+    [SerializeField] public GameObject optionPannel;
+    [SerializeField] private GameObject block;
+    [SerializeField] public GameObject SoundManager;
+    [SerializeField] public Slider BGM;
+    [SerializeField] public Slider Effect;
     [SerializeField] public GameObject dialogUI;
     [SerializeField] public TMP_Text dialogText;
     [SerializeField] public Image face;
@@ -46,10 +53,28 @@ public class GameManager : MonoBehaviour
         miniManager.minigame.SetActive(false);
         endingData = GameObject.Find("EndingData");
         isProlog = true;
+        SoundManager = GameObject.Find("SoundManager");
+        beep = SoundManager.GetComponent<TextAudio>();
+        BGM.value = SoundManager.GetComponent<SoundManager>().bgm;
+        Effect.value = SoundManager.GetComponent<SoundManager>().effect;
         startDialog(prologDialog);
 
         dialogBtn.onClick.AddListener(()=>{
             OnDialogClick();
+        });
+        optionBtn.onClick.AddListener(()=>{
+            Time.timeScale = 0;
+            optionPannel.SetActive(true);
+            block.SetActive(true);
+        });
+        BGM.onValueChanged.AddListener((value)=>{
+            SoundManager.GetComponent<SoundManager>().SetBGMVolume(BGM.value);
+        });
+        Effect.onValueChanged.AddListener((value)=>{
+            SoundManager.GetComponent<SoundManager>().SetEffectVolume(Effect.value);
+        });
+        cancleBtn.onClick.AddListener(()=>{
+            optionPannel.SetActive(false);
         });
     }
 

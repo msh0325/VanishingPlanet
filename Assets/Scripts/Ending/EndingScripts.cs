@@ -23,6 +23,7 @@ public class EndingScripts : MonoBehaviour
     void Start()
     {
         endingData = GameObject.Find("EndingData");
+        typing = GameObject.Find("SoundManager").GetComponent<TextAudio>();
         EndingData data = endingData.GetComponent<EndingData>();
         TypingEnding(data,endingScripts);
 

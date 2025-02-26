@@ -13,7 +13,6 @@ public class DontDestroyOnLoad : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         dontDestroyObjs.Add(gameObject.name);        
         DontDestroyOnLoad(gameObject);
     }

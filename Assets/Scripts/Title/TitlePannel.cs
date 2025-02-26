@@ -7,7 +7,10 @@ using UnityEngine.UI;
 public class TitlePannel : MonoBehaviour
 {
     [SerializeField] public Button startBtn;
+    [SerializeField] public Button optionBtn;
     [SerializeField] public Button exitBtn;
+    [SerializeField] private GameObject soundPannel;
+    [SerializeField] GameObject block;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +21,11 @@ public class TitlePannel : MonoBehaviour
                 data.GetComponent<EndingData>().ResetData();
             }
             SceneManager.LoadScene("ExploreScene");
+        });
+
+        optionBtn.onClick.AddListener(()=>{
+            block.SetActive(true);
+            soundPannel.SetActive(true);
         });
 
         exitBtn.onClick.AddListener(()=>{

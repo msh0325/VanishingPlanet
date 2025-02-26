@@ -14,7 +14,6 @@ public class TextAudio : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
         beepsounds = new Dictionary<string, AudioClip>{
             {"Player",speech},
             {"NPC",speech}
@@ -27,17 +26,14 @@ public class TextAudio : MonoBehaviour
     public void PlayBeep(){
         switch (nowCharacter){
             case "Player" :
-            audioSource.volume = 1.2f;
                 audioSource.pitch = 1.0f;
                 audioSource.PlayOneShot(speech);
                 break;
             case "NPC" :
-                audioSource.volume = 1.2f;
                 audioSource.pitch = 1.5f;
                 audioSource.PlayOneShot(speech);
                 break;
             case "Result" :
-                audioSource.volume = 0.6f;
                 audioSource.pitch = 1.0f;
                 audioSource.PlayOneShot(typing);
                 break;

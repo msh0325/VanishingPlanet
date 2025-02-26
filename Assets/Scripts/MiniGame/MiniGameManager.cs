@@ -44,7 +44,7 @@ public class MiniGameManager : MonoBehaviour
     }
 
     public void SetMiniGame(){
-        if(gm.pc.exploreCount + gm.pc.neglectCount <= 1){
+        if(gm.pc.exploreCount == 1){
             miniTutorial.SetActive(true);
         }
         minigame.SetActive(true);
