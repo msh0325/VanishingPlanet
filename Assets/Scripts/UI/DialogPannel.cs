@@ -13,6 +13,7 @@ public class DialogPannel : MonoBehaviour
     void Start()
     {
         gm = GameManager.instance;
+        endingData = GameObject.Find("EndingData").GetComponent<EndingData>();
         // 1번 선택지
         selectbtn1.onClick.AddListener(()=>{
             Debug.Log("1번 선택");

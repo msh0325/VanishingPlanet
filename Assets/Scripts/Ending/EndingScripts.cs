@@ -67,7 +67,7 @@ public class EndingScripts : MonoBehaviour
                     typing.PlayBeep();
                     lastSoundTime = Time.time;
                 }
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.8f);
             }
         }
         else if(isResult){
@@ -78,7 +78,7 @@ public class EndingScripts : MonoBehaviour
                     typing.PlayBeep();
                     lastSoundTime = Time.time;
                 }
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.8f);
             }
             scriptend = true;
         }
